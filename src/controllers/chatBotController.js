@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const My_VERIFY_TOKEN= process.env.My_VERIFY_TOKEN;
+const My_VERIFY_TOKEN = process.env.My_VERIFY_TOKEN;
 
 let info = (req, res) => {
     return res.send("Zak Chat Bot v1.0.0");
@@ -43,10 +43,13 @@ let postWebhook = (req, res) => {
         // Iterates over each entry - there may be multiple if batched
         body.entry.forEach(function (entry) {
 
-            // Gets the message. entry.messaging is an array, but 
-            // will only ever contain one message, so we get index 0
+            // Gets the body of the webhook event
             let webhook_event = entry.messaging[0];
             console.log(webhook_event);
+
+            // Get the sender PSID
+            let sender_psid = webhook_event.sender.id;
+            console.log('Sender PSID: ' + sender_psid);
         });
 
         // Returns a '200 OK' response to all requests
