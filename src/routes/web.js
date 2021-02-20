@@ -1,10 +1,13 @@
 import express from "express";
+import chatBotController from "../controllers/chatBotController"
 let router = express.Router();
 
 let initWebRoutes=(app)=>{
-    router.get("/",(req, res)=>{
-         res.send("Zak Chat Bot 1.0.0")
-    })
+    router.get("/",chatBotController.info)
+
+    router.get("/webhook",chatBotController.getWebhook)
+
+    router.post("webhook", chatBotController.postWebhook)
 
     return app.use("/", router)
 }
