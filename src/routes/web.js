@@ -7,7 +7,7 @@ let initWebRoutes=(app)=>{
 
     router.get("/webhook",chatBotController.getWebhook)
 
-    router.post("webhook", chatBotController.postWebhook)
+    router.post("/webhook", chatBotController.postWebhook)
 
     return app.use("/", router)
 }

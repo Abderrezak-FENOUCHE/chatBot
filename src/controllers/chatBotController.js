@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const My_VERIFY_TOKEN = process.env.My_VERIFY_TOKEN;
+const MY_VERIFY_TOKEN = process.env.MY_VERIFY_TOKEN;
 
 let info = (req, res) => {
     return res.send("Zak Chat Bot v1.0.0");
@@ -8,7 +8,7 @@ let info = (req, res) => {
 
 let getWebhook = (req, res) => {
     // Your verify token. Should be a random string.
-    let VERIFY_TOKEN = My_VERIFY_TOKEN;
+    let VERIFY_TOKEN = MY_VERIFY_TOKEN;
     console.log(VERIFY_TOKEN)
 
     // Parse the query params
