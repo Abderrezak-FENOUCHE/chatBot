@@ -14,13 +14,14 @@
   "author": "Abderrezak FENOUCHE",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.12.17",
+    "@babel/node": "^7.12.17",
+    "@babel/preset-env": "^7.12.17",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "@babel/core": "^7.12.17",
-    "@babel/node": "^7.12.17",
-    "@babel/preset-env": "^7.12.17",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "request": "^2.88.2"
   }
 }
