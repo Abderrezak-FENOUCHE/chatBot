@@ -1,3 +1,4 @@
 # chatBot
-### made by:
-######Abderrezak FENOUCHE
+## made by:
+###Abderrezak FENOUCHE
+###abfenouche@gmail.com
