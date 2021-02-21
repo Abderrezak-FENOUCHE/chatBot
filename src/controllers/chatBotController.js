@@ -76,13 +76,43 @@ function handleMessage(sender_psid, received_message) {
 
     let response;
 
-    // Check if the message contains text
+    // Checks if the message contains text
     if (received_message.text) {
 
-        // Create the payload for a basic text message
-        response = {
-            "text": `Hi, you sent the message: "${received_message.text}". Now send me an image!`
+        if (received_message.text === "Comment vas-tu ?") {
+            response = {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "button",
+                        "text": "Très bien et vous ?",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Je vais bien, merci",
+                                "payload": "cv",
+                            },
+                            {
+                                "type": "postback",
+                                "title": "Non, ça ne va pas",
+                                "payload": "cvpas",
+                            }
+                        ]
+                    }
+                }
+            }
+        } else {
+            response = {
+                "text": `Vous avez envoyé le message: "${received_message.text}"`
+            }
         }
+
+    } else if (received_message.attachments) {
+
+        response = {
+            "text": `Je ne sais pas traiter ce type de demande!`
+        }
+
     }
 
     // Sends the response message
@@ -91,7 +121,19 @@ function handleMessage(sender_psid, received_message) {
 
 // Handles messaging_postbacks events
 function handlePostback(sender_psid, received_postback) {
-
+    let response;
+  
+    // Get the payload for the postback
+    let payload = received_postback.payload;
+  
+    // Set the response based on the postback payload
+    if (payload === 'cv') {
+      response = { "text": "super!, alors profitez bien  de la vie !" }
+    } else if (payload === 'cvpas') {
+      response = { "text": "Oops, essayez de faire du sport ou de sortir, cela vous fera du bien !" }
+    }
+    // Send the message to acknowledge the postback
+    callSendAPI(sender_psid, response);
 }
 
 // Sends response messages via the Send API
