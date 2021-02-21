@@ -110,7 +110,7 @@ function handleMessage(sender_psid, received_message) {
     } else if (received_message.attachments) {
 
         response = {
-            "text": `Je ne sais pas traiter ce type de demande!`
+            "text": `Je ne sais pas traiter ce type de demande pour le moment!`
         }
 
     }
